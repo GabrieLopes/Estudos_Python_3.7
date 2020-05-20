@@ -13,6 +13,11 @@ from Estudos_Python_3.Curso_5.ExtratorArgumentosUrl import ExtratorArgumentosUrl
 # print(index)
 
 
-url = "https://www.bytebank.com.br/cambio?moedaorigem=real&moedadestino=dolar&valor=700"
+url = "moedaorigem=real&moedadestino=dolar"
 
-print(ExtratorArgumentosUrl.ExtratorArgumentosUrl(url))
+argumentosUrl = ExtratorArgumentosUrl(url)
+
+moeda_origem, moeda_destino = argumentosUrl.extrair_argumentos()
+print(moeda_destino, moeda_origem)
+
+
