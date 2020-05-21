@@ -12,12 +12,14 @@ from Estudos_Python_3.Curso_5.ExtratorArgumentosUrl import ExtratorArgumentosUrl
 # index = argumento.split("=")
 # print(index)
 
+#
 
+#
+# argumentosUrl = ExtratorArgumentosUrl(url)
+#
+# moeda_origem, moeda_destino = argumentosUrl.extrair_argumentos()
+# print(moeda_destino, moeda_origem)
 url = "moedaorigem=real&moedadestino=dolar"
 
-argumentosUrl = ExtratorArgumentosUrl(url)
-
-moeda_origem, moeda_destino = argumentosUrl.extrair_argumentos()
-print(moeda_destino, moeda_origem)
 
 
