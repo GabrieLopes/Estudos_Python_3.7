@@ -11,3 +11,4 @@ class Cliente:
     @nome.setter
     def nome(self, nome):
         self.__nome = nome
+
