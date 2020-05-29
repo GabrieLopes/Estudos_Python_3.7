@@ -1,4 +1,4 @@
-from Estudos_Python_3.Curso_5.ExtratorArgumentosUrl import ExtratorArgumentosUrl
+from Estudos_Python_3.Curso_5_Completo.ExtratorArgumentosUrl import ExtratorArgumentosUrl
 
 # argumento = "www.bytebank.com/cambio?moedaorigem=real"
 # subString = argumento[5:11]
