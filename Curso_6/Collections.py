@@ -1,3 +1,7 @@
+import array as arr
+from abc import ABCMeta, abstractmethod
+
+import numpy as np
 # idade1 = 39
 # idade2 = 29
 # idade3 = 19
@@ -116,10 +120,62 @@
 
 # gabriel = depositar(gabriel)
 
-daniela = ("Daniela", 31, 1987)
-gabriel = ("Gabriel", 19, 2000)
+# daniela = ("Daniela", 31, 1987)
+# gabriel = ("Gabriel", 19, 2000)
+#
+# usuarios = [daniela, gabriel]
+# usuarios.append(("Paulo", 39, 1979))
+#
+# print(usuarios)
 
-usuarios = [daniela, gabriel]
-usuarios.append(("Paulo", 39, 1979))
 
-print(usuarios)
+class Conta(metaclass=ABCMeta):
+
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    def __str__(self):
+        return "[>>Codigo {} Saldo {}<<]".format(self._codigo, self._saldo)
+
+    @abstractmethod
+    def passa_o_mes(self):
+        pass
+
+
+class ContaCorrente(Conta):
+    def passa_o_mes(self):
+        self._saldo -= 2
+
+
+class ContaPoupanca(Conta):
+    def passa_o_mes(self):
+        self._saldo *= 1.01
+        self._saldo -= 3
+
+
+class ContaInvestimento(Conta):
+    pass
+
+
+# conta16 = ContaCorrente(16)
+# conta16.deposita(1000)
+#
+# conta17 = ContaPoupanca(17)
+# conta17.deposita(1000)
+#
+# contas = [conta16, conta17]
+#
+# for conta in contas:
+#     conta.passa_o_mes()
+#     print(conta)
+
+
+arr.array('d', [1.0, 3.5])
+
+# evitaremos usar array puro, se precisarmos de trabalho numérico, é costume usar o numpy
+numeros = np.array([1, 3.5])
+print(numeros + 3)
