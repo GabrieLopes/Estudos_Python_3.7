@@ -205,9 +205,21 @@ conta1 = ContaSalario(37)
 
 conta2 = ContaMultiploSalario(37)
 
-print(conta1 == conta2)
-print(conta1 in [conta2])
-print(conta2 in [conta1])
+# print(conta1 == conta2)
+# print(conta1 in [conta2])
+# print(conta2 in [conta1])
 
 # print(isinstance(Conta(), Conta))
-print(isinstance(ContaCorrente(37), Conta))
+# print(isinstance(ContaCorrente(37), Conta))
+
+idades = [9, 15, 20, 31, 35, 49, 56, 37]
+
+range(len(idades)) # lazy
+
+enumerate(idades) # lazy
+
+# print(list(range(len(idades))))
+# print(list(enumerate(idades)))
+
+for indice, valor in enumerate(idades):
+    print(indice, "x" , valor)
