@@ -161,6 +161,27 @@ class ContaInvestimento(Conta):
     pass
 
 
+class ContaSalario:
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    def __eq__(self, other):
+        if type(other) != ContaSalario:
+            return False
+
+        return self._codigo == other._codigo and self._saldo == other._saldo
+
+    def deposita(self, valor):
+        self._saldo += valor
+
+    def __str__(self):
+        return "[>>Codigo {}  Saldo {}<<]".format(self._codigo, self._saldo)
+
+
+class ContaMultiploSalario(ContaSalario):
+    pass
+
 # conta16 = ContaCorrente(16)
 # conta16.deposita(1000)
 #
@@ -174,8 +195,19 @@ class ContaInvestimento(Conta):
 #     print(conta)
 
 
-arr.array('d', [1.0, 3.5])
+# arr.array('d', [1.0, 3.5])
 
 # evitaremos usar array puro, se precisarmos de trabalho numérico, é costume usar o numpy
-numeros = np.array([1, 3.5])
-print(numeros + 3)
+# numeros = np.array([1, 3.5])
+# print(numeros + 3)
+
+conta1 = ContaSalario(37)
+
+conta2 = ContaMultiploSalario(37)
+
+print(conta1 == conta2)
+print(conta1 in [conta2])
+print(conta2 in [conta1])
+
+# print(isinstance(Conta(), Conta))
+print(isinstance(ContaCorrente(37), Conta))
