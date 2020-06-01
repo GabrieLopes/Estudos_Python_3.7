@@ -221,5 +221,22 @@ enumerate(idades) # lazy
 # print(list(range(len(idades))))
 # print(list(enumerate(idades)))
 
-for indice, valor in enumerate(idades):
-    print(indice, "x" , valor)
+# for indice, valor in enumerate(idades):
+#     print(indice, "x" , valor)
+
+
+usuarios = [
+    ("Guilherme", 37, 1981),
+    ("Daniela", 31, 1987),
+    ("Paulo", 39, 1979)
+]
+
+for nome, idade, nascimento in usuarios:
+    print(nome)
+
+print(list(reversed(idades)))
+
+print(sorted(idades, reverse=True))
+
+idades.sort()
+print(idades)
