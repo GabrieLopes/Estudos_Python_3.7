@@ -1,7 +1,9 @@
 import array as arr
 from abc import ABCMeta, abstractmethod
-
+from operator import attrgetter
 import numpy as np
+
+
 # idade1 = 39
 # idade2 = 29
 # idade3 = 19
@@ -127,7 +129,36 @@ import numpy as np
 # usuarios.append(("Paulo", 39, 1979))
 #
 # print(usuarios)
+# conta16 = ContaCorrente(16)
+# conta16.deposita(1000)
+#
+# conta17 = ContaPoupanca(17)
+# conta17.deposita(1000)
+#
+# contas = [conta16, conta17]
+#
+# for conta in contas:
+#     conta.passa_o_mes()
+#     print(conta)
 
+
+# arr.array('d', [1.0, 3.5])
+
+# evitaremos usar array puro, se precisarmos de trabalho numérico, é costume usar o numpy
+# numeros = np.array([1, 3.5])
+# print(numeros + 3)
+
+# print(list(range(len(idades))))
+# print(list(enumerate(idades)))
+
+# for indice, valor in enumerate(idades):
+#     print(indice, "x" , valor)
+# print(conta1 == conta2)
+# print(conta1 in [conta2])
+# print(conta2 in [conta1])
+
+# print(isinstance(Conta(), Conta))
+# print(isinstance(ContaCorrente(37), Conta))
 
 class Conta(metaclass=ABCMeta):
 
@@ -172,6 +203,9 @@ class ContaSalario:
 
         return self._codigo == other._codigo and self._saldo == other._saldo
 
+    def __lt__(self, other):
+        return self._saldo < other._saldo
+
     def deposita(self, valor):
         self._saldo += valor
 
@@ -179,64 +213,60 @@ class ContaSalario:
         return "[>>Codigo {}  Saldo {}<<]".format(self._codigo, self._saldo)
 
 
-class ContaMultiploSalario(ContaSalario):
-    pass
+# class ContaMultiploSalario(ContaSalario):
+#
+#
+#
+# conta1 = ContaSalario(37)
+#
+# conta2 = ContaMultiploSalario(37)
+#
+#
+# idades = [9, 15, 20, 31, 35, 49, 56, 37]
+#
+# range(len(idades)) # lazy
+#
+# enumerate(idades) # lazy
+#
+#
+#
+# usuarios = [
+#     ("Guilherme", 37, 1981),
+#     ("Daniela", 31, 1987),
+#     ("Paulo", 39, 1979)
+# ]
+#
+# for nome, idade, nascimento in usuarios:
+#     print(nome)
+#
+# print(list(reversed(idades)))
+#
+# print(sorted(idades, reverse=True))
+#
+# idades.sort()
+# print(idades)
 
-# conta16 = ContaCorrente(16)
-# conta16.deposita(1000)
-#
-# conta17 = ContaPoupanca(17)
-# conta17.deposita(1000)
-#
-# contas = [conta16, conta17]
-#
-# for conta in contas:
-#     conta.passa_o_mes()
+
+conta_do_guilherme = ContaSalario(17)
+conta_do_guilherme.deposita(500)
+
+conta_da_dani = ContaSalario(3)
+conta_da_dani.deposita(1000)
+
+conta_do_paulo = ContaSalario(133)
+conta_do_paulo.deposita(510)
+
+contas = [conta_do_guilherme, conta_da_dani, conta_do_paulo]
+
+
+# def extrai_saldo(conta):
+#     return conta._saldo
+
+
+# for conta in sorted(contas, key=attrgetter("_saldo")):
 #     print(conta)
 
+for conta in sorted(contas):
+    print(conta)
 
-# arr.array('d', [1.0, 3.5])
-
-# evitaremos usar array puro, se precisarmos de trabalho numérico, é costume usar o numpy
-# numeros = np.array([1, 3.5])
-# print(numeros + 3)
-
-conta1 = ContaSalario(37)
-
-conta2 = ContaMultiploSalario(37)
-
-# print(conta1 == conta2)
-# print(conta1 in [conta2])
-# print(conta2 in [conta1])
-
-# print(isinstance(Conta(), Conta))
-# print(isinstance(ContaCorrente(37), Conta))
-
-idades = [9, 15, 20, 31, 35, 49, 56, 37]
-
-range(len(idades)) # lazy
-
-enumerate(idades) # lazy
-
-# print(list(range(len(idades))))
-# print(list(enumerate(idades)))
-
-# for indice, valor in enumerate(idades):
-#     print(indice, "x" , valor)
-
-
-usuarios = [
-    ("Guilherme", 37, 1981),
-    ("Daniela", 31, 1987),
-    ("Paulo", 39, 1979)
-]
-
-for nome, idade, nascimento in usuarios:
-    print(nome)
-
-print(list(reversed(idades)))
-
-print(sorted(idades, reverse=True))
-
-idades.sort()
-print(idades)
+print(conta_do_guilherme > conta_da_dani)
