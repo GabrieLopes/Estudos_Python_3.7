@@ -22,8 +22,8 @@ usuarios_machine_learning = {13, 23, 56, 42}
 #
 # usuarios_machine_learning[3]
 
-for usuario in set(assistiram):
-    print(usuario)
+# for usuario in set(assistiram):
+#     print(usuario)
 
 usuarios_data_science = {15, 23, 43, 56}
 usuarios_machine_learning = {13, 23, 56, 42}
@@ -57,7 +57,7 @@ usuarios = frozenset(usuarios)
 
 type(usuarios)
 
-usuarios.add(134)
+# usuarios.add(134)
 
 meu_texto = "Bem vindo meu nome é Guilherme eu gosto muito de nomes e tenho o meu cachorro e gosto muito de cachorro"
 meu_texto.split()
@@ -166,7 +166,7 @@ for palavra in meu_texto.split():
 
 class Conta:
     def __init__(self):
-        print("Criando uma conta")
+        pass
 
 
 contas = defaultdict(Conta)
@@ -178,12 +178,43 @@ contas[15]
 
 from collections import Counter
 
-aparicoes = Counter()
-for palavra in meu_texto.split():
-    aparicoes[palavra] += 1
+# aparicoes = Counter()
+# for palavra in meu_texto.split():
+#     aparicoes[palavra] += 1
 
 # aparicoes
 
-aparicoes = Counter(meu_texto.split())
+# aparicoes = Counter(meu_texto.split())
 
 # aparicoes
+
+texto1 = """ 
+Em certas situações, queremos apenas algumas informações que estão nesse arquivo, porém, os dados costumam mudar frequentemente. Utilizando uma API conseguiremos ir direto ao ponto, evitando baixar arquivos desnecessários e economizando tempo.
+
+E foi exatamente o que aconteceu durante essa semana, quando eu recebi uma tarefa para listar somente os repositórios do github de uma funcionária da empresa onde trabalho.
+ """
+
+texto2 = """ 
+Maravilha! Alcançamos nosso objetivo. Não tinha ideia que fosse tão simples assim, não é?! Você pode encontrar o código completo aqui.
+
+Esta é apenas uma das inúmeras funcionalidades da poderosa biblioteca de requests e você pode saber mais sobre ela acessando a documentação da mesma.
+
+Gostou deste artigo e quer conhecer mais sobre os poderes da linguagem python? Que tal dar uma olhada em nossos cursos de Python aqui na Alura? Bons estudos e até o próximo artigo!
+
+"""
+
+
+def analisa_frequencia_de_letras(texto):
+    # texto1.split()
+    aparicoes = Counter(texto.lower())
+    total_de_caracteres = sum(aparicoes.values())
+
+    proporcoes = [(letra, frequencia / total_de_caracteres) for letra, frequencia in aparicoes.items()]
+    proporcoes = Counter(dict(proporcoes))
+
+    mais_comuns = proporcoes.most_common(10)
+    for caractere, proporcao in mais_comuns:
+        print("{} => {:.2f}%".format(caractere, proporcao * 100))
+
+
+analisa_frequencia_de_letras(texto2)
